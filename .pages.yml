@@ -48,7 +48,15 @@ content:
     label: Navigation
     type: file
     path: _data/nav.yml
-    format: raw
+    format: yaml
+    fields:
+      - name: links
+        label: Nav links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: href, label: Link, type: string }
 
   - name: footer
     label: Footer

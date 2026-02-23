@@ -33,7 +33,7 @@ layout: default
 
 <h2>nav</h2>
 <ul>
-  {% for item in site.data.nav %}
+  {% for item in site.data.nav.links %}
   <li>label: {{ item.label }}, href: {{ item.href }}</li>
   {% endfor %}
 </ul>

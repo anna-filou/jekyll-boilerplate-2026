@@ -1,4 +1,5 @@
-- label: Blog
-  href: "/blog"
-- label: Works
-  href: "/works"
+links:
+  - label: Blog
+    href: "/blog"
+  - label: Works
+    href: "/works"

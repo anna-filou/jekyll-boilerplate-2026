@@ -1,7 +1,7 @@
 <header>
   <a href="/">{{ site.data.seo.title }}</a>
   <nav>
-    {% for item in site.data.nav %}
+    {% for item in site.data.nav.links %}
     <a href="{{ item.href }}">{{ item.label }}</a>
     {% endfor %}
   </nav>
