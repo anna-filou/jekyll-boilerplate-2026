@@ -65,6 +65,26 @@ Open `http://localhost:4000`. The root `/` is the homepage; `/blog`, `/works`, `
 
 With `settings.content.merge: true`, the CMS merges your edits into existing files instead of overwriting them, which helps preserve Liquid (e.g. `{{ site.data.contact.company }}` in privacy) or other content you don’t expose in the schema.
 
+### Tips for a good .pages.yml
+
+- **Media as a list:** Use the array form for `media` (a `-` before each entry) so multiple media folders are supported and the schema stays clear. Each entry needs `name`, `label`, `input`, `output`, and optionally `path`.
+- **Lists of objects (nav, footer):** Use a single field with `type: object` and `list: true`. The field name (e.g. `links`) becomes the key in the YAML file, so the data file has that key wrapping the array. Use the same field names for similar lists (e.g. `label` and `href` for both nav and footer) so templates stay consistent.
+- **Collapsible list with summary:** For list fields, use `list:` as an object with `collapsible.summary` so the CMS shows a meaningful label per item instead of "Item #1", "Item #2". Example:
+  ```yaml
+  - name: links
+    label: Nav links
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: "{fields.label}"
+    fields:
+      - { name: label, label: Label, type: string }
+      - { name: href, label: Link, type: string }
+  ```
+  The summary template can use `{fields.fieldName}` for any field in the list item (e.g. `{fields.label}` or `{fields.title}`).
+- **Data files as canon:** Prefer updating `.pages.yml` to match your `_data/*.yml` structure (e.g. root-level list → use a wrapper key and `links` in the schema) rather than changing the data file shape to fit a default schema.
+
 ---
 
 ## Meta assets
