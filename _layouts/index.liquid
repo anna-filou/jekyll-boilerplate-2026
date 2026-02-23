@@ -10,11 +10,13 @@ layout: default
 <ul>
   <li>title: {{ site.data.seo.title }}</li>
   <li>description: {{ site.data.seo.description }}</li>
-  <li>image: {{ site.data.seo.image }}</li>
+  <li>image: {{ site.data.seo.image }}
+    {% if site.data.seo.image != '' and site.data.seo.image != nil %}
+      <img src="{{ site.data.seo.image }}" alt="OG image" style="max-width: 100%; height: auto;">
+    {% endif %}
+  </li>
+  <li>Favicon: <img src="/assets/img/meta/favicon.svg" alt="Favicon" width="32" height="32"></li>
 </ul>
-{% if site.data.seo.image != '' and site.data.seo.image != nil %}
-<img src="{{ site.data.seo.image }}" alt="OG image" style="max-width: 100%; height: auto;">
-{% endif %}
 
 <h2>contact</h2>
 <ul>
