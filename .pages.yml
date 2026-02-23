@@ -1,4 +1,8 @@
-# Pages CMS: content is stored in _data/*.yml. Keep these paths in sync when editing.
+# Pages CMS: content is stored in _data/*.yml and markdown files. Keep paths in sync when editing.
+
+settings:
+  content:
+    merge: true
 
 media:
   - name: images
@@ -43,11 +47,7 @@ content:
     label: Navigation
     type: file
     path: _data/nav.yml
-    format: yaml
-    list: true
-    fields:
-      - { name: label, label: Label, type: string }
-      - { name: href, label: Link (e.g. #section or /page), type: string }
+    format: raw
 
   - name: footer
     label: Footer
@@ -66,3 +66,79 @@ content:
         fields:
           - { name: ref, label: Page ref (terms, privacy), type: string }
           - { name: label, label: Label, type: string }
+
+  - name: terms
+    label: Terms
+    type: file
+    path: terms.md
+    format: yaml-frontmatter
+    fields:
+      - { name: layout, label: Layout, type: string, default: article }
+      - { name: title, label: Title, type: string }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: privacy
+    label: Privacy
+    type: file
+    path: privacy.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: layout, label: Layout, type: string, default: article }
+      - { name: body, label: Body, type: rich-text, description: "Don't remove {{ ... }} Liquid placeholders for contact info." }
+
+  - name: posts
+    label: Posts
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [ title, date ]
+      primary: title
+      sort: [ date, title ]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: layout, label: Layout, type: string, default: default }
+      - { name: title, label: Title, type: string }
+      - { name: permalink, label: Permalink (optional, e.g. /blog/my-post/), type: string }
+      - { name: date, label: Date, type: date }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: works
+    label: Works
+    type: collection
+    path: _works
+    format: yaml-frontmatter
+    filename: "{name}.md"
+    view:
+      fields: [ title, name ]
+      primary: title
+      sort: [ title ]
+    fields:
+      - { name: name, label: URL slug, type: string, description: "Slug for URL and filename (e.g. sample-project)." }
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: hero_image, label: Hero image, type: image }
+      - { name: layout, label: Layout, type: string, default: default }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: blog_index
+    label: Blog page
+    type: file
+    path: blog.md
+    format: yaml-frontmatter
+    fields:
+      - { name: layout, label: Layout, type: string, default: blog }
+      - { name: title, label: Title, type: string }
+
+  - name: works_index
+    label: Works page
+    type: file
+    path: works.md
+    format: yaml-frontmatter
+    fields:
+      - { name: layout, label: Layout, type: string, default: works }
+      - { name: title, label: Title, type: string }

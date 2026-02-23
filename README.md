@@ -57,7 +57,13 @@ Open `http://localhost:4000`. The root `/` is the homepage; `/blog`, `/works`, `
 
 ## Pages CMS
 
-`.pages.yml` defines how Pages CMS edits the `_data` files. When you edit content in the CMS, it writes back to `_data/contact.yml`, `_data/seo.yml`, etc.
+`.pages.yml` defines how Pages CMS edits content. You can edit:
+
+- **Data files:** `_data/contact.yml`, `_data/seo.yml`, `_data/nav.yml`, `_data/footer.yml`.
+- **Markdown pages:** Terms (`terms.md`), Privacy (`privacy.md`), and the Blog and Works index pages (`blog.md`, `works.md`). For these, the main content is the **body** field (rich-text); front matter (layout, title) is edited in the same form.
+- **Collections:** Posts (`_posts/`) and Works (`_works/`). Each post has date, title, permalink, and body; each work has a URL slug (name), title, description, hero image, and body.
+
+With `settings.content.merge: true`, the CMS merges your edits into existing files instead of overwriting them, which helps preserve Liquid (e.g. `{{ site.data.contact.company }}` in privacy) or other content you don’t expose in the schema.
 
 ---
 
