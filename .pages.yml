@@ -71,7 +71,10 @@ content:
       - name: links
         label: Footer links
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.label}"
         fields:
           - { name: label, label: Label, type: string }
           - { name: href, label: Link, type: string }
