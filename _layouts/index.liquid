@@ -44,7 +44,7 @@ layout: default
   <li>links:
     <ul>
       {% for link in site.data.footer.links %}
-      <li>ref: {{ link.ref }}, label: {{ link.label }}</li>
+      <li>label: {{ link.label }}, href: {{ link.href }}</li>
       {% endfor %}
     </ul>
   </li>

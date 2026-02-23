@@ -69,15 +69,12 @@ content:
     fields:
       - { name: company_name, label: Company name, type: string }
       - name: links
-        label: Links
+        label: Footer links
         type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{fields.label}"
+        list: true
         fields:
-          - { name: ref, label: Page ref (terms, privacy), type: string }
           - { name: label, label: Label, type: string }
+          - { name: href, label: Link, type: string }
 
   - name: terms
     label: Terms

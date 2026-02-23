@@ -2,7 +2,7 @@
   <span>© {{ "now" | date: "%Y" }} {{ site.data.footer.company_name }}</span>
   <div class="footer-links">
     {% for link in site.data.footer.links %}
-    <a href="/{{ link.ref }}">{{ link.label }}</a>
+    <a href="{{ link.href }}">{{ link.label }}</a>
     {% endfor %}
   </div>
 </footer>
