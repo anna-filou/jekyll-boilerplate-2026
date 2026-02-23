@@ -15,7 +15,7 @@ layout: default
       <img src="{{ site.data.seo.image }}" alt="OG image" style="max-width: 100%; height: auto;">
     {% endif %}
   </li>
-  <li>Favicon: <img src="/assets/img/meta/favicon.svg" alt="Favicon" width="32" height="32"></li>
+  {% if site.data.seo.favicon %}<li>Favicon: <img src="{{ site.data.seo.favicon }}" alt="Favicon" width="32" height="32"></li>{% endif %}
 </ul>
 
 <h2>contact</h2>
