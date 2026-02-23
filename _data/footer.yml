@@ -1,0 +1,10 @@
+company_name: Company Name
+links:
+  - ref: blog
+    label: Blog
+  - ref: works
+    label: Works
+  - ref: terms
+    label: Terms
+  - ref: privacy
+    label: Privacy

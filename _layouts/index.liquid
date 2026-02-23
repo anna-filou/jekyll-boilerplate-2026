@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+{% if data %}{% assign site.data = data %}{% endif %}
+
+<h1>Data output</h1>
+
+<h2>seo</h2>
+<ul>
+  <li>title: {{ site.data.seo.title }}</li>
+  <li>description: {{ site.data.seo.description }}</li>
+  <li>image: {{ site.data.seo.image }}</li>
+</ul>
+{% if site.data.seo.image != '' and site.data.seo.image != nil %}
+<img src="{{ site.data.seo.image }}" alt="OG image" style="max-width: 100%; height: auto;">
+{% endif %}
+
+<h2>contact</h2>
+<ul>
+  <li>title: {{ site.data.contact.title }}</li>
+  <li>description: {{ site.data.contact.description }}</li>
+  <li>company: {{ site.data.contact.company }}</li>
+  <li>address: {{ site.data.contact.address }}</li>
+  <li>maps: {{ site.data.contact.maps }}</li>
+  <li>tel: {{ site.data.contact.tel }}</li>
+  <li>call: {{ site.data.contact.call }}</li>
+  <li>email.address: {{ site.data.contact.email.address }}</li>
+  <li>email.subject: {{ site.data.contact.email.subject }}</li>
+</ul>
+
+<h2>nav</h2>
+<ul>
+  {% for item in site.data.nav %}
+  <li>label: {{ item.label }}, href: {{ item.href }}</li>
+  {% endfor %}
+</ul>
+
+<h2>footer</h2>
+<ul>
+  <li>company_name: {{ site.data.footer.company_name }}</li>
+  <li>links:
+    <ul>
+      {% for link in site.data.footer.links %}
+      <li>ref: {{ link.ref }}, label: {{ link.label }}</li>
+      {% endfor %}
+    </ul>
+  </li>
+</ul>
+
+<h2>Blog posts</h2>
+{% if site.posts.size > 0 %}
+<ul>
+  {% for post in site.posts %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a> — {{ post.date | date: "%Y-%m-%d" }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No posts yet.</p>
+{% endif %}
+
+<h2>Works</h2>
+{% if site.works.size > 0 %}
+<ul>
+  {% for work in site.works %}
+  <li><a href="{{ work.url }}">{{ work.title }}</a> — {{ work.description }} (hero: {{ work.hero_image | default: "—" }})</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No works yet.</p>
+{% endif %}
+
+<h2>Assets needed (assets/img/meta)</h2>
+<ul>
+  <li>favicon.svg — browser tab icon</li>
+  <li>og.jpg — social sharing image (Open Graph / Twitter card, e.g. 1200×630)</li>
+</ul>

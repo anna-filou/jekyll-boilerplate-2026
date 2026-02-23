@@ -1,0 +1,10 @@
+title: Contact
+description: Get in touch for any questions.
+company: Company Name
+address: Street, City, Postcode
+maps: https://maps.example.com
+tel: "+00 000 000 0000"
+call: Call
+email:
+  address: you@example.com
+  subject: Message from website

@@ -1,0 +1,68 @@
+# Pages CMS: content is stored in _data/*.yml. Keep these paths in sync when editing.
+
+media:
+  - name: images
+    label: Images
+    input: assets/img
+    output: /assets/img
+    path: assets/img
+
+content:
+  - name: contact
+    label: Contact
+    type: file
+    path: _data/contact.yml
+    format: yaml
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: company, label: Company, type: string }
+      - { name: address, label: Address, type: text }
+      - { name: maps, label: Maps URL, type: string }
+      - { name: tel, label: Phone, type: string }
+      - { name: call, label: Call button, type: string }
+      - name: email
+        label: Email
+        type: object
+        fields:
+          - { name: address, label: Email address, type: string }
+          - { name: subject, label: Subject, type: string }
+
+  - name: seo
+    label: SEO
+    type: file
+    path: _data/seo.yml
+    format: yaml
+    fields:
+      - { name: url, label: Site URL, type: string }
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: image, label: Social sharing image (optional), type: image }
+
+  - name: nav
+    label: Navigation
+    type: file
+    path: _data/nav.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: label, label: Label, type: string }
+      - { name: href, label: Link (e.g. #section or /page), type: string }
+
+  - name: footer
+    label: Footer
+    type: file
+    path: _data/footer.yml
+    format: yaml
+    fields:
+      - { name: company_name, label: Company name, type: string }
+      - name: links
+        label: Links
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.label}"
+        fields:
+          - { name: ref, label: Page ref (terms, privacy), type: string }
+          - { name: label, label: Label, type: string }

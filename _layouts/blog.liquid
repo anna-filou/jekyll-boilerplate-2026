@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<h1>Blog</h1>
+
+{% if site.posts.size > 0 %}
+  <ul>
+    {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      {% if post.excerpt != blank %}
+        <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No posts yet.</p>
+{% endif %}
